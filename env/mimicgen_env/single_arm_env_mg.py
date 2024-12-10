@@ -54,7 +54,7 @@ class SingleArmEnv_MG_C(SingleArmEnv_MG):
             check_lst = [loc for loc, val in enumerate(old_path_split) if val == "robosuite"]
             if len(check_lst) > 0:
                 ind = max(check_lst) # last occurrence index
-                new_path_split = path_split + old_path_split[ind + 2 :]
+                new_path_split = os.path.split(robosuite.__file__)[0].split("/") + old_path_split[ind + 1 :]
                 new_path = "/".join(new_path_split)
                 elem.set("file", new_path)
 

@@ -240,7 +240,7 @@ class AnyObject(MujocoXMLObject):
     Any object.
     """
     def __init__(self, name):
-        self.xml_path = os.path.join(XML_ASSETS_BASE_PATH, f"objects/{name}.xml")
+        self.xml_path = os.path.join(XML_ASSETS_BASE_PATH, f"objects/{name}/{name}.xml")
         super().__init__(self.xml_path,
                          name=name, joints=[dict(type="free", damping="0.0005")],
                          obj_type="all", duplicate_collision_geoms=True)

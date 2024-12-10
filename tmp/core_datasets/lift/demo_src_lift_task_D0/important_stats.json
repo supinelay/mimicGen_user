@@ -6,9 +6,9 @@
     "num_failures": 0,
     "num_attempts": 3,
     "num_problematic": 0,
-    "ep_length_mean": 1025.0,
+    "ep_length_mean": 1098.0,
     "ep_length_std": 0.0,
-    "ep_length_max": 1025,
-    "ep_length_3std": 1025,
+    "ep_length_max": 1098,
+    "ep_length_3std": 1098,
     "time spent (hrs)": "0.01"
 }

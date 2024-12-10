@@ -1,0 +1,21 @@
+<mujoco model="cup1">
+  <default>
+    <default class="visual">
+      <geom group="2" type="mesh" contype="0" conaffinity="0"/>
+    </default>
+    <default class="collision">
+      <geom group="3" type="mesh"/>
+    </default>
+  </default>
+  <asset>
+    <texture type="2d" name="A11_Pla-Fab_CY_S_BaseColor" file="A11_Pla-Fab_CY_S_BaseColor.png"/>
+    <material name="02_-_Default" texture="A11_Pla-Fab_CY_S_BaseColor" specular="1.0" shininess="0.199999995"/>
+    <mesh file="cup1.obj"/>
+  </asset>
+  <worldbody>
+    <body name="cup1">
+      <geom material="02_-_Default" mesh="cup1" class="visual"/>
+      <geom mesh="cup1" class="collision"/>
+    </body>
+  </worldbody>
+</mujoco>
