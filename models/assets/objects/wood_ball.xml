@@ -1,0 +1,18 @@
+<mujoco model="ball">
+  <asset>
+    <texture type="2d" name="BaseColor" file="meshes/wood_ball.png"/>
+    <material name="wood_ball" texture="BaseColor" specular="0.5" shininess="0.25" />
+    <mesh name="wood_ball" file="meshes/wood_ball.obj"/>
+  </asset>
+  <worldbody>
+    <body>
+      <body name="object">
+       <geom material="wood_ball" mesh="wood_ball" solimp="0.998 0.998 0.001" solref="0.001 1" density="50" friction="0.95 0.3 0.1"  group="0" condim="4"/>
+      </body>
+
+      <site rgba="0 0 0 0" size="0.005" pos="0 0 -0.045" name="bottom_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0 0 0.03" name="top_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0.03 0.03 0" name="horizontal_radius_site"/>
+    </body>
+  </worldbody>
+</mujoco>

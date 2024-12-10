@@ -1,0 +1,14 @@
+{
+    "generation_path": "./tmp/core_datasets/lift/demo_src_lift_task_D0",
+    "success_rate": 100.0,
+    "failure_rate": 0.0,
+    "num_success": 3,
+    "num_failures": 0,
+    "num_attempts": 3,
+    "num_problematic": 0,
+    "ep_length_mean": 1025.0,
+    "ep_length_std": 0.0,
+    "ep_length_max": 1025,
+    "ep_length_3std": 1025,
+    "time spent (hrs)": "0.01"
+}

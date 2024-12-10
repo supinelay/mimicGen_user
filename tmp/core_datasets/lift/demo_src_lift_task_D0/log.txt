@@ -1,0 +1,317 @@
+
+============= Config =============
+{
+    "name": "lift",
+    "type": "robosuite",
+    "experiment": {
+        "name": "demo_src_lift_task_D0",
+        "source": {
+            "dataset_path": "./datasets/source/lift.hdf5",
+            "filter_key": null,
+            "n": 10,
+            "start": null
+        },
+        "generation": {
+            "path": "./tmp/core_datasets/lift",
+            "guarantee": false,
+            "keep_failed": true,
+            "num_trials": 3,
+            "select_src_per_subtask": true,
+            "transform_first_robot_pose": false,
+            "interpolate_from_last_target_pose": true
+        },
+        "task": {
+            "name": "LiftAny_D0",
+            "robot": null,
+            "gripper": null,
+            "interface": null,
+            "interface_type": null
+        },
+        "max_num_failures": 25,
+        "render_video": true,
+        "num_demo_to_render": 10,
+        "num_fail_demo_to_render": 25,
+        "log_every_n_attempts": 50,
+        "seed": 1
+    },
+    "obs": {
+        "collect_obs": true,
+        "camera_names": [
+            "agentview",
+            "robot0_eye_in_hand"
+        ],
+        "camera_height": 84,
+        "camera_width": 84
+    },
+    "task": {
+        "task_spec": {
+            "subtask_1": {
+                "object_ref": "cube",
+                "subtask_term_signal": "grasp",
+                "subtask_term_offset_range": [
+                    10,
+                    20
+                ],
+                "selection_strategy": "random",
+                "selection_strategy_kwargs": null,
+                "action_noise": 0.05,
+                "num_interpolation_steps": 5,
+                "num_fixed_steps": 0,
+                "apply_noise_during_interpolation": false
+            },
+            "subtask_2": {
+                "object_ref": null,
+                "subtask_term_signal": null,
+                "subtask_term_offset_range": null,
+                "selection_strategy": "random",
+                "selection_strategy_kwargs": null,
+                "action_noise": 0.05,
+                "num_interpolation_steps": 5,
+                "num_fixed_steps": 0,
+                "apply_noise_during_interpolation": false
+            }
+        }
+    }
+}
+
+
+============= Initialized Observation Utils with Obs Spec =============
+
+using obs modality: low_dim with keys: []
+using obs modality: rgb with keys: ['agentview_image', 'robot0_eye_in_hand_image']
+ROBOMIMIC WARNING(
+    No environment version found in dataset!
+    Cannot verify if dataset and installed environment versions match
+)
+
+==== Using environment with the following metadata ====
+{
+    "env_name": "LiftAny_D0",
+    "env_version": "1.4.1",
+    "type": 1,
+    "env_kwargs": {
+        "has_renderer": false,
+        "has_offscreen_renderer": true,
+        "render_camera": "agentview",
+        "ignore_done": true,
+        "use_camera_obs": true,
+        "control_freq": 20,
+        "obj_name": "wood_ball",
+        "controller_configs": {
+            "type": "OSC_POSE",
+            "input_max": 1,
+            "input_min": -1,
+            "output_max": [
+                0.05,
+                0.05,
+                0.05,
+                0.5,
+                0.5,
+                0.5
+            ],
+            "output_min": [
+                -0.05,
+                -0.05,
+                -0.05,
+                -0.5,
+                -0.5,
+                -0.5
+            ],
+            "kp": 150,
+            "damping_ratio": 1,
+            "impedance_mode": "fixed",
+            "kp_limits": [
+                0,
+                300
+            ],
+            "damping_ratio_limits": [
+                0,
+                10
+            ],
+            "position_limits": null,
+            "orientation_limits": null,
+            "uncouple_pos_ori": true,
+            "control_delta": true,
+            "interpolation": null,
+            "ramp_ratio": 0.2
+        },
+        "robots": "Panda",
+        "reward_shaping": false,
+        "camera_names": [
+            "agentview",
+            "robot0_eye_in_hand"
+        ],
+        "camera_heights": 84,
+        "camera_widths": 84,
+        "use_object_obs": true,
+        "camera_depths": false,
+        "render_gpu_device_id": 0
+    }
+}
+
+Created environment interface: MG_Lift
+
+DataGenerator: loading dataset at path ./datasets/source/lift.hdf5...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|##########| 1/1 [00:00<00:00, 1547.71it/s]
+
+DataGenerator: done loading
+
+
+==== Created Data Generator ====
+DataGenerator (
+	dataset_path=./datasets/source/lift.hdf5
+	demo_keys=['demo_1']
+)
+
+
+**************************************************
+trial 1 success: True
+have 1 successes out of 1 trials so far
+have 0 failures out of 1 trials so far
+**************************************************
+
+**************************************************
+trial 2 success: True
+have 2 successes out of 2 trials so far
+have 0 failures out of 2 trials so far
+**************************************************
+
+**************************************************
+trial 3 success: True
+have 3 successes out of 3 trials so far
+have 0 failures out of 3 trials so far
+**************************************************
+
+Finished data generation. Merging per-episode hdf5s together...
+
+removing folder at path ./tmp/core_datasets/lift/demo_src_lift_task_D0/tmp
+removing folder at path ./tmp/core_datasets/lift/demo_src_lift_task_D0/tmp_failed
+
+Stats Summary
+{
+    "generation_path": "./tmp/core_datasets/lift/demo_src_lift_task_D0",
+    "success_rate": 100.0,
+    "failure_rate": 0.0,
+    "num_success": 3,
+    "num_failures": 0,
+    "num_attempts": 3,
+    "num_problematic": 0,
+    "ep_length_mean": 1025.0,
+    "ep_length_std": 0.0,
+    "ep_length_max": 1025,
+    "ep_length_3std": 1025,
+    "time spent (hrs)": "0.01"
+}
+Rendering successful trajectories...
+
+make_dataset_video(
+	dataset_path=./tmp/core_datasets/lift/demo_src_lift_task_D0/lift.hdf5,
+	video_path=./tmp/core_datasets/lift/demo_src_lift_task_D0/playback_demo_src_lift_task_D0.mp4,
+	num_render=10,
+)
+
+============= Initialized Observation Utils with Obs Spec =============
+
+using obs modality: low_dim with keys: ['robot0_eef_pos']
+using obs modality: rgb with keys: []
+Created environment with name LiftAny_D0
+Action size is 7
+Playing back episode: demo_0
+Playing back episode: demo_1
+Playing back episode: demo_2
+
+********************************************************************************
+
+WARNING: skipping dataset video creation since no failures
+
+********************************************************************************
+
+finished run successfully!
+
+Final Data Generation Stats
+{
+    "generation_path": "./tmp/core_datasets/lift/demo_src_lift_task_D0",
+    "success_rate": 100.0,
+    "failure_rate": 0.0,
+    "num_success": 3,
+    "num_failures": 0,
+    "num_attempts": 3,
+    "num_problematic": 0,
+    "ep_length_mean": 1025.0,
+    "ep_length_std": 0.0,
+    "ep_length_max": 1025,
+    "ep_length_3std": 1025,
+    "time spent (hrs)": "0.01"
+}
+Exception ignored in: <function MjRenderContext.__del__ at 0x79c217505ca0>
+Traceback (most recent call last):
+  File "/home/exploit-01/miniconda3/envs/mimicgen2/lib/python3.8/site-packages/robosuite/utils/binding_utils.py", line 199, in __del__
+    self.gl_ctx.free()
+  File "/home/exploit-01/miniconda3/envs/mimicgen2/lib/python3.8/site-packages/robosuite/renderers/context/egl_context.py", line 150, in free
+    EGL.eglDestroyContext(EGL_DISPLAY, self._context)
+  File "/home/exploit-01/miniconda3/envs/mimicgen2/lib/python3.8/site-packages/OpenGL/error.py", line 230, in glCheckError
+    raise self._errorClass(
+OpenGL.raw.EGL._errors.EGLError: EGLError(
+	err = EGL_NOT_INITIALIZED,
+	baseOperation = eglDestroyContext,
+	cArguments = (
+		<OpenGL._opaque.EGLDisplay_pointer object at 0x79c13a0da540>,
+		<OpenGL._opaque.EGLContext_pointer object at 0x79c13a1c08c0>,
+	),
+	result = 0
+)
+Exception ignored in: <function EGLGLContext.__del__ at 0x79c217505af0>
+Traceback (most recent call last):
+  File "/home/exploit-01/miniconda3/envs/mimicgen2/lib/python3.8/site-packages/robosuite/renderers/context/egl_context.py", line 155, in __del__
+    self.free()
+  File "/home/exploit-01/miniconda3/envs/mimicgen2/lib/python3.8/site-packages/robosuite/renderers/context/egl_context.py", line 150, in free
+    EGL.eglDestroyContext(EGL_DISPLAY, self._context)
+  File "/home/exploit-01/miniconda3/envs/mimicgen2/lib/python3.8/site-packages/OpenGL/error.py", line 230, in glCheckError
+    raise self._errorClass(
+OpenGL.raw.EGL._errors.EGLError: EGLError(
+	err = EGL_NOT_INITIALIZED,
+	baseOperation = eglDestroyContext,
+	cArguments = (
+		<OpenGL._opaque.EGLDisplay_pointer object at 0x79c13a0da540>,
+		<OpenGL._opaque.EGLContext_pointer object at 0x79c13a1c08c0>,
+	),
+	result = 0
+)
+Exception ignored in: <function MjRenderContext.__del__ at 0x79c217505ca0>
+Traceback (most recent call last):
+  File "/home/exploit-01/miniconda3/envs/mimicgen2/lib/python3.8/site-packages/robosuite/utils/binding_utils.py", line 199, in __del__
+    self.gl_ctx.free()
+  File "/home/exploit-01/miniconda3/envs/mimicgen2/lib/python3.8/site-packages/robosuite/renderers/context/egl_context.py", line 149, in free
+    EGL.eglMakeCurrent(EGL_DISPLAY, EGL.EGL_NO_SURFACE, EGL.EGL_NO_SURFACE, EGL.EGL_NO_CONTEXT)
+  File "/home/exploit-01/miniconda3/envs/mimicgen2/lib/python3.8/site-packages/OpenGL/error.py", line 230, in glCheckError
+    raise self._errorClass(
+OpenGL.raw.EGL._errors.EGLError: EGLError(
+	err = EGL_NOT_INITIALIZED,
+	baseOperation = eglMakeCurrent,
+	cArguments = (
+		<OpenGL._opaque.EGLDisplay_pointer object at 0x79c13a0da540>,
+		<OpenGL._opaque.EGLSurface_pointer object at 0x79c21787fd40>,
+		<OpenGL._opaque.EGLSurface_pointer object at 0x79c21787fd40>,
+		<OpenGL._opaque.EGLContext_pointer object at 0x79c21787f9c0>,
+	),
+	result = 0
+)
+Exception ignored in: <function EGLGLContext.__del__ at 0x79c217505af0>
+Traceback (most recent call last):
+  File "/home/exploit-01/miniconda3/envs/mimicgen2/lib/python3.8/site-packages/robosuite/renderers/context/egl_context.py", line 155, in __del__
+    self.free()
+  File "/home/exploit-01/miniconda3/envs/mimicgen2/lib/python3.8/site-packages/robosuite/renderers/context/egl_context.py", line 149, in free
+    EGL.eglMakeCurrent(EGL_DISPLAY, EGL.EGL_NO_SURFACE, EGL.EGL_NO_SURFACE, EGL.EGL_NO_CONTEXT)
+  File "/home/exploit-01/miniconda3/envs/mimicgen2/lib/python3.8/site-packages/OpenGL/error.py", line 230, in glCheckError
+    raise self._errorClass(
+OpenGL.raw.EGL._errors.EGLError: EGLError(
+	err = EGL_NOT_INITIALIZED,
+	baseOperation = eglMakeCurrent,
+	cArguments = (
+		<OpenGL._opaque.EGLDisplay_pointer object at 0x79c13a0da540>,
+		<OpenGL._opaque.EGLSurface_pointer object at 0x79c21787fd40>,
+		<OpenGL._opaque.EGLSurface_pointer object at 0x79c21787fd40>,
+		<OpenGL._opaque.EGLContext_pointer object at 0x79c21787f9c0>,
+	),
+	result = 0
+)

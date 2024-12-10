@@ -1,0 +1,26 @@
+<mujoco model="scene">
+  <default>
+    <default class="visual">
+      <geom group="2" type="mesh" contype="0" conaffinity="0"/>
+    </default>
+    <default class="collision">
+      <geom group="3" type="mesh"/>
+    </default>
+  </default>
+  <asset>
+    <texture type="2d" name="F02_Wood_R_XL_BaseColor" file="F02_Wood_R_XL_BaseColor.png"/>
+    <material name="01_-_Default" texture="F02_Wood_R_XL_BaseColor" specular="1.0" shininess="0.199999995"/>
+    <texture type="2d" name="dimian_BaseColor" file="dimian_BaseColor.png"/>
+    <material name="plane" texture="dimian_BaseColor" specular="0.5" shininess="0.25"/>
+    <mesh file="scene_0.obj"/>
+    <mesh file="scene_1.obj"/>
+  </asset>
+  <worldbody>
+    <body name="scene">
+      <geom mesh="scene_0" material="plane" class="visual"/>
+      <geom mesh="scene_1" material="01_-_Default" class="visual"/>
+      <geom mesh="scene_0" class="collision"/>
+      <geom mesh="scene_1" class="collision"/>
+    </body>
+  </worldbody>
+</mujoco>
